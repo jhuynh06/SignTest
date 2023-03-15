@@ -1,16 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.signtest.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
-
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#handleSigLevel" prefHeight="549.0" prefWidth="789.0" style="-fx-background-color: #1E1E1E; -fx-background-size: 1200 900;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.signtest.HelloController">
+   <children>
+      <JFXButton fx:id="openFile" layoutX="277.0" layoutY="200.0" onAction="#handleOpenFile" onMouseClicked="#handleOpenFile" text="Open" textFill="#fef9e8" />
+      <Label fx:id="label" layoutX="262.0" layoutY="183.0" prefHeight="17.0" prefWidth="122.0" style="-fx-font-family: &quot;Sora Bold&quot;;" stylesheets="@style.css" text="Current file:" textFill="#fef9e8">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <Label layoutX="253.0" layoutY="131.0" text="Significance Level" textFill="#fef9e8" />
+      <TextField fx:id="sigLevel" layoutX="226.0" layoutY="158.0" onKeyTyped="#handleSigLevel" />
+      <TextField fx:id="probField" layoutX="226.0" layoutY="277.0" onKeyTyped="#handleProbLevel" />
+      <Label layoutX="272.0" layoutY="254.0" text="Probability" textFill="#fef9e8" />
+      <TextField fx:id="medianField" layoutX="226.0" layoutY="106.0" onKeyTyped="#handleMedian" />
+      <Label fx:id="medianLabel" layoutX="443.0" layoutY="281.0" text="Median" textFill="#fef9e8" />
+      <Label fx:id="terms" layoutX="652.0" layoutY="175.0" text="n Terms" textFill="#fef9e8" />
+      <Label fx:id="positiveSigns" layoutX="637.0" layoutY="231.0" text="Positive Signs" textFill="#fef9e8" />
+      <Label fx:id="NegativeSigns" layoutX="400.0" layoutY="204.0" text="Negative Signs" textFill="#fef9e8" />
+      <Label fx:id="pLabel" layoutX="488.0" layoutY="162.0" text="p value" textFill="#fef9e8" />
+      <Label fx:id="conclusionLabel" layoutX="632.0" layoutY="315.0" text="Conclusion" textFill="#fef9e8" />
+      <JFXButton fx:id="signButton" layoutX="613.0" layoutY="119.0" onMouseClicked="#handleCalculate" text="Calculate Signs" textFill="#fef9e8" />
+      <JFXButton fx:id="pvalueButton" layoutX="409.0" layoutY="119.0" onMouseClicked="#handlePbutton" text="Calculate p-value" textFill="#fef9e8" />
+      <JFXButton fx:id="conclusionButton" layoutX="652.0" layoutY="269.0" onMouseClicked="#handleConclusionButton" text="conclude" textFill="#fef9e8" />
+      <Pane prefHeight="549.0" prefWidth="200.0" style="-fx-background-color: #282828;" />
+   </children>
+</AnchorPane>
