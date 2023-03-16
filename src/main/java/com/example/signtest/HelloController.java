@@ -1,10 +1,13 @@
 package com.example.signtest;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -29,11 +32,15 @@ public class HelloController {
     @FXML
     public JFXButton conclusionButton;
     @FXML
+    public Label size;
+    @FXML
     private TextField probField;
     @FXML
     private TextField sigLevel;
     @FXML
     private Label label;
+    @FXML
+    private Label insertFile;
     @FXML
     private Button openFile;
     @FXML
@@ -49,19 +56,30 @@ public class HelloController {
     private DataSet given;
     final FileChooser fileChooser = new FileChooser();
     public void setTextToLabel (String text) {
-        label.setText("Current file is " + text);
+        insertFile.setText(text);
+    }
+    public void setTextforSize (String text) {
+        size.setText(text + " kb");
     }
     @FXML
     public void handleOpenFile(ActionEvent actionEvent) {
-        fileChooser.setTitle("My File Chooser");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("csv", "*.csv"));
-        File file = fileChooser.showOpenDialog(null);
-        path = file.getAbsolutePath();
-        System.out.println(path);
-        setTextToLabel(path);
-        OpenCSV convert = new OpenCSV();
-        given = convert.readColumns(path);
+        try {
+            fileChooser.setTitle("My File Chooser");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("csv", "*.csv"));
+            File file = fileChooser.showOpenDialog(null);
+            path = file.getAbsolutePath();
+            System.out.println(path);
+            setTextToLabel(path);
+            setTextforSize(String.valueOf(file.length()/1024));
+            OpenCSV convert = new OpenCSV();
+            given = convert.readColumns(path);
+
+        }
+        catch (Exception e) {
+            System.out.println("No file selected!");
+        }
     }
+
 
     @FXML
     public void handleSigLevel(KeyEvent keyEvent) {

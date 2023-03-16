@@ -2,3 +2,7 @@
     font-family: 'Sora';
     src: url('fonts/Sora.ttf');
 }
+@font-face {
+    font-family: 'Sora-SemiBold';
+    src: url('fonts/Sora-SemiBold.ttf');
+}
