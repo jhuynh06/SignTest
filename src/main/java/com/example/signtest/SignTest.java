@@ -8,25 +8,30 @@ public class SignTest extends HelloController {
     private int nTerms;
     private double pValue;
     public void takeSignsTwoSample(ArrayList<Double> d1, ArrayList<Double> d2) {
-        nTerms = d1.size();
-        for(int i = 0; i < d1.size(); i++ ) {
-            double diff = d1.get(i) - d2.get(i);
-            if (diff < 0) {
-                neg++;
-            }
-            else if(diff > 0) {
-                pos++;
-            }
-            else {
-                nTerms -= 1;
-            }
+        if (oneSample == false) {
+            nTerms = d1.size();
+            for(int i = 0; i < d1.size(); i++ ) {
+                double diff = d1.get(i) - d2.get(i);
+                if (diff < 0) {
+                    neg++;
+                }
+                else if(diff > 0) {
+                    pos++;
+                }
+                else {
+                    nTerms -= 1;
+                }
 
+            }
+        }
+        else {
+            takeSignsOneSample(d1, medianForOneSample);
         }
     }
-    public void takeSignsOneSample(ArrayList<Integer> d1, int median) {
+    public void takeSignsOneSample(ArrayList<Double> d1, double median) {
         nTerms = d1.size();
         for (int i = 0; i < d1.size(); i++) {
-            int diff = d1.get(i) - median;
+            double diff = d1.get(i) - median;
             if (diff < 0) {
                 neg++;
             }

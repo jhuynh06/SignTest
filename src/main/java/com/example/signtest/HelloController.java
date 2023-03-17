@@ -62,11 +62,12 @@ public class HelloController {
     private Label medianLabel;
     @FXML
     private TextField medianField;
-    private double medianForOneSample;
+    public double medianForOneSample;
     protected static String path;
     protected static double sig;
     protected static double prob;
     protected static boolean SampleNumber;
+    public boolean oneSample = false;
     private SignTest signTest;
     private DataSet given;
     final FileChooser fileChooser = new FileChooser();
@@ -156,4 +157,5 @@ public class HelloController {
     public void handleConclusionButton() {
         conclusionLabel.setText("Conclusion: " + signTest.conclusion());
     }
+
 }
