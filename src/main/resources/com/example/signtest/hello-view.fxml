@@ -2,26 +2,19 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#handleSigLevel" prefHeight="549.0" prefWidth="789.0" style="-fx-background-color: #1E1E1E; -fx-background-size: 1200 900;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.signtest.HelloController">
+<AnchorPane maxHeight="549.0" maxWidth="789.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="789.0" style="-fx-background-color: #1E1E1E; -fx-background-size: 1200 900;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.signtest.HelloController">
    <children>
-      <TextField fx:id="sigLevel" layoutX="226.0" layoutY="158.0" onKeyTyped="#handleSigLevel" />
-      <TextField fx:id="probField" layoutX="226.0" layoutY="277.0" onKeyTyped="#handleProbLevel" />
-      <Label layoutX="272.0" layoutY="254.0" text="Probability" textFill="#fef9e8" />
-      <Label fx:id="medianLabel" layoutX="443.0" layoutY="281.0" text="Median" textFill="#fef9e8" />
-      <Label fx:id="terms" layoutX="652.0" layoutY="175.0" text="n Terms" textFill="#fef9e8" />
-      <Label fx:id="positiveSigns" layoutX="637.0" layoutY="231.0" text="Positive Signs" textFill="#fef9e8" />
-      <Label fx:id="pLabel" layoutX="488.0" layoutY="162.0" text="p value" textFill="#fef9e8" />
-      <Label fx:id="conclusionLabel" layoutX="632.0" layoutY="315.0" text="Conclusion" textFill="#fef9e8" />
-      <JFXButton fx:id="signButton" layoutX="613.0" layoutY="119.0" onMouseClicked="#handleCalculate" text="Calculate Signs" textFill="#fef9e8" />
-      <JFXButton fx:id="pvalueButton" layoutX="409.0" layoutY="119.0" onMouseClicked="#handlePbutton" text="Calculate p-value" textFill="#fef9e8" />
-      <JFXButton fx:id="conclusionButton" layoutX="652.0" layoutY="269.0" onMouseClicked="#handleConclusionButton" text="conclude" textFill="#fef9e8" />
       <Pane prefHeight="549.0" prefWidth="212.0" style="-fx-background-color: #282828;">
          <children>
             <Label fx:id="label" layoutX="13.0" layoutY="452.0" prefHeight="75.0" prefWidth="187.0" style="-fx-font-family: &quot;Sora Bold&quot;; -fx-border-color: white; -fx-border-width: 0.1; -fx-border-radius: 12; -fx-background-color: #175DDC; -fx-background-radius: 18 18 18 18; -fx-border-radius: 18 18 18 18;" stylesheets="@style.css" textFill="#fef9e8">
@@ -34,36 +27,75 @@
                   <Image url="@icons/xl.png" />
                </image>
             </ImageView>
-            <Label fx:id="insertFile" layoutX="65.0" layoutY="468.0" prefHeight="18.0" prefWidth="127.0" style="-fx-font-family: Sora;" text="Current File:" textFill="#fef9e8" />
-            <Label fx:id="size" layoutX="65.0" layoutY="490.0" prefHeight="20.0" prefWidth="127.0" style="-fx-font-family: Sora;" text="0kb" textFill="#fef9e8" />
-            <Label fx:id="label1" layoutX="13.0" layoutY="14.0" prefHeight="102.0" prefWidth="187.0" style="-fx-font-family: &quot;Sora Bold&quot;; -fx-border-color: white; -fx-border-width: 0.1; -fx-border-radius: 18 18 18 18; -fx-background-color: #175DDC; -fx-background-radius: 18 18 18 18;" stylesheets="@style.css" textFill="#fef9e8">
+            <Label fx:id="insertFile" layoutX="65.0" layoutY="468.0" prefHeight="18.0" prefWidth="127.0" style="-fx-font-family: &quot;Sora SemiBold&quot;;" text="Current File:" textFill="#fef9e8" />
+            <Label fx:id="size" layoutX="65.0" layoutY="490.0" prefHeight="20.0" prefWidth="127.0" style="-fx-font-family: &quot;Sora SemiBold&quot;;" text="0kb" textFill="#fef9e8" />
+            <Label fx:id="label1" layoutX="13.0" layoutY="14.0" prefHeight="93.0" prefWidth="187.0" style="-fx-font-family: &quot;Sora Bold&quot;; -fx-border-color: white; -fx-border-width: 0.1; -fx-border-radius: 18 18 18 18; -fx-background-color: #175DDC; -fx-background-radius: 18 18 18 18;" stylesheets="@style.css" textFill="#fef9e8">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="NegativeSigns" layoutX="31.0" layoutY="8.0" prefHeight="43.0" prefWidth="152.0" style="-fx-font-family: &quot;Sora SemiBold&quot;; -fx-font-size: 13;" stylesheets="@style.css" text="Negative Signs" textFill="#fef9e8" />
-            <ImageView fitHeight="20.0" fitWidth="15.0" layoutX="176.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+            <Label fx:id="NegativeSigns" layoutX="35.0" layoutY="8.0" prefHeight="43.0" prefWidth="152.0" style="-fx-font-family: &quot;Sora SemiBold&quot;; -fx-font-size: 13;" stylesheets="@style.css" text="Negative Signs" textFill="#fef9e8" />
+            <ImageView fitHeight="20.0" fitWidth="15.0" layoutX="172.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icons/more.png" />
                </image>
             </ImageView>
-            <Label fx:id="label11" layoutX="13.0" layoutY="127.0" prefHeight="102.0" prefWidth="187.0" style="-fx-font-family: &quot;Sora Bold&quot;; -fx-border-color: white; -fx-border-width: 0.1; -fx-border-radius: 18 18 18 18; -fx-background-color: #175DDC; -fx-background-radius: 18 18 18 18;" stylesheets="@style.css" textFill="#fef9e8">
+            <Label fx:id="label11" layoutX="13.0" layoutY="123.0" prefHeight="93.0" prefWidth="187.0" style="-fx-font-family: &quot;Sora Bold&quot;; -fx-border-color: white; -fx-border-width: 0.1; -fx-border-radius: 18 18 18 18; -fx-background-color: #175DDC; -fx-background-radius: 18 18 18 18;" stylesheets="@style.css" textFill="#fef9e8">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="label12" layoutX="13.0" layoutY="246.0" prefHeight="102.0" prefWidth="187.0" style="-fx-font-family: &quot;Sora Bold&quot;; -fx-border-color: white; -fx-border-width: 0.1; -fx-border-radius: 18 18 18 18; -fx-background-color: #175DDC; -fx-background-radius: 18 18 18 18;" stylesheets="@style.css" textFill="#fef9e8">
+            <Text fx:id="negativeCount" fill="#fef9e8" layoutX="82.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: &quot;Sora ExtraBold&quot;;" text="0" wrappingWidth="49.0">
+               <font>
+                  <Font size="49.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="20.0" fitWidth="15.0" layoutX="172.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/more.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="NegativeSigns1" layoutX="31.0" layoutY="118.0" prefHeight="43.0" prefWidth="152.0" style="-fx-font-family: &quot;Sora SemiBold&quot;; -fx-font-size: 13;" stylesheets="@style.css" text="Positive Signs" textFill="#fef9e8" />
+            <Text fx:id="positiveCount" fill="#fef9e8" layoutX="82.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: &quot;Sora ExtraBold&quot;;" text="0" wrappingWidth="49.0">
+               <font>
+                  <Font size="49.0" />
+               </font>
+            </Text>
+            <Label fx:id="label111" layoutX="13.0" layoutY="234.0" prefHeight="93.0" prefWidth="187.0" style="-fx-font-family: &quot;Sora Bold&quot;; -fx-border-color: white; -fx-border-width: 0.1; -fx-border-radius: 18 18 18 18; -fx-background-color: #175DDC; -fx-background-radius: 18 18 18 18;" stylesheets="@style.css" textFill="#fef9e8">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="label2" layoutX="13.0" layoutY="364.0" prefHeight="75.0" prefWidth="187.0" style="-fx-font-family: &quot;Sora Bold&quot;; -fx-border-color: white; -fx-border-width: 0.1; -fx-border-radius: 12; -fx-background-color: #175DDC; -fx-background-radius: 18 18 18 18; -fx-border-radius: 18 18 18 18;" stylesheets="@style.css" textFill="#fef9e8">
+            <Label fx:id="label112" layoutX="13.0" layoutY="345.0" prefHeight="93.0" prefWidth="187.0" style="-fx-font-family: &quot;Sora Bold&quot;; -fx-border-color: white; -fx-border-width: 0.1; -fx-border-radius: 18 18 18 18; -fx-background-color: #175DDC; -fx-background-radius: 18 18 18 18;" stylesheets="@style.css" textFill="#fef9e8">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
+            <ImageView fitHeight="20.0" fitWidth="15.0" layoutX="172.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/more.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="20.0" fitWidth="15.0" layoutX="172.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/more.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="NegativeSigns11" layoutX="30.0" layoutY="230.0" prefHeight="43.0" prefWidth="152.0" style="-fx-font-family: &quot;Sora SemiBold&quot;; -fx-font-size: 13;" stylesheets="@style.css" text="Number of Terms" textFill="#fef9e8" />
+            <Text fx:id="nTermsDisplay" fill="#fef9e8" layoutX="82.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: &quot;Sora ExtraBold&quot;;" text="0" wrappingWidth="49.0">
+               <font>
+                  <Font size="49.0" />
+               </font>
+            </Text>
+            <Label fx:id="NegativeSigns111" layoutX="30.0" layoutY="339.0" prefHeight="43.0" prefWidth="152.0" style="-fx-font-family: &quot;Sora SemiBold&quot;; -fx-font-size: 13;" stylesheets="@style.css" text="P-value" textFill="#fef9e8" />
+            <Text fx:id="pValueDisplay" fill="#fef9e8" layoutX="58.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: &quot;Sora ExtraBold&quot;;" text="0.0" wrappingWidth="96.0">
+               <font>
+                  <Font size="49.0" />
+               </font>
+            </Text>
+            <Text fill="#fef9e8" layoutX="121.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: &quot;Sora ExtraBold&quot;;" text="terms" />
          </children></Pane>
-      <JFXButton fx:id="openFile" graphicTextGap="2.0" layoutX="224.0" layoutY="451.0" onAction="#handleOpenFile" onMouseClicked="#handleOpenFile" prefHeight="75.0" prefWidth="551.0" style="-fx-border-style: solid; -fx-border-color: white; -fx-font-family: Sora; -fx-border-radius: 20 20 20 20; -fx-background-color: #282828; -fx-border-width: 0.1; -fx-background-radius: 20 20 20 20;" text="Select a CSV file to upload" textFill="#fef9e8">
+      <JFXButton fx:id="openFile" graphicTextGap="2.0" layoutX="224.0" layoutY="451.0" onAction="#handleOpenFile" onMouseClicked="#handleOpenFile" prefHeight="75.0" prefWidth="551.0" style="-fx-border-style: solid; -fx-border-color: white; -fx-font-family: &quot;Sora SemiBold&quot;; -fx-border-radius: 20 20 20 20; -fx-background-color: #282828; -fx-border-width: 0.1; -fx-background-radius: 20 20 20 20;" text="Select a CSV file to upload" textFill="#fef9e8">
          <font>
             <Font size="14.0" />
          </font>
@@ -73,7 +105,55 @@
             <Image url="@icons/upload-icon-6.png" />
          </image>
       </ImageView>
-      <TextField fx:id="medianField" layoutX="237.0" layoutY="95.0" onKeyTyped="#handleMedian" />
-      <Label layoutX="414.0" layoutY="54.0" text="Significance Level" textFill="#fef9e8" />
+      <Label layoutX="295.0" layoutY="46.0" prefHeight="43.0" prefWidth="452.0" style="-fx-border-width: 0.1; -fx-border-style: solid; -fx-border-color: white; -fx-background-color: #282828; -fx-border-radius: 20 20 20 20; -fx-background-radius: 20 20 20 20;" />
+      <TextField fx:id="probField" layoutX="314.0" layoutY="51.0" onKeyTyped="#handleProbLevel" prefHeight="26.0" prefWidth="414.0" style="-fx-background-color: none; -fx-font-family: Sora;" />
+      <ImageView fitHeight="43.0" fitWidth="41.0" layoutX="747.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons/SignTest.png" />
+         </image>
+      </ImageView>
+      <Text fill="#fef9e8" layoutX="228.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: &quot;Sora ExtraBold&quot;;" text="P(A)" wrappingWidth="58.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text fill="#fef9e8" layoutX="229.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: &quot;Sora SemiBold&quot;;" text="Probability:" wrappingWidth="108.0" />
+      <Label layoutX="295.0" layoutY="130.0" prefHeight="43.0" prefWidth="452.0" style="-fx-border-width: 0.1; -fx-border-style: solid; -fx-border-color: white; -fx-background-color: #282828; -fx-border-radius: 20 20 20 20; -fx-background-radius: 20 20 20 20;" />
+      <TextField fx:id="sigLevel" layoutX="314.0" layoutY="139.0" onKeyTyped="#handleSigLevel" prefHeight="26.0" prefWidth="414.0" style="-fx-background-color: none; -fx-font-family: Sora;" />
+      <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="237.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons/alpha.png" />
+         </image>
+      </ImageView>
+      <Text fill="#fef9e8" layoutX="229.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: &quot;Sora SemiBold&quot;;" text="Significance Level:" wrappingWidth="144.0" />
+      <Label layoutX="295.0" layoutY="212.0" prefHeight="43.0" prefWidth="452.0" style="-fx-border-width: 0.1; -fx-border-style: solid; -fx-border-color: white; -fx-background-color: #282828; -fx-border-radius: 20 20 20 20; -fx-background-radius: 20 20 20 20;" />
+      <Text fill="#fef9e8" layoutX="231.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: &quot;Sora SemiBold&quot;;" text="Median (one sample only):" wrappingWidth="212.0" />
+      <TextField fx:id="medianField" layoutX="314.0" layoutY="221.0" onKeyTyped="#handleMedian" prefHeight="26.0" prefWidth="414.0" style="-fx-background-color: none; -fx-font-family: Sora;" />
+      <Text fill="#fef9e8" layoutX="231.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: &quot;Sora ExtraBold&quot;;" text="MED" wrappingWidth="68.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Label layoutX="224.0" layoutY="386.0" prefHeight="53.0" prefWidth="271.0" style="-fx-border-width: 0.1; -fx-border-style: solid; -fx-border-color: white; -fx-background-color: #282828; -fx-border-radius: 20 20 20 20; -fx-background-radius: 20 20 20 20;" />
+      <MenuButton fx:id="CalculateMenu" layoutX="230.0" layoutY="387.0" mnemonicParsing="false" onMouseClicked="#handleMenuButton" prefHeight="43.0" prefWidth="259.0" style="-fx-background-color: transparent; -fx-font-family: &quot;Sora SemiBold&quot;;" text="Choose an option to calculate:" textFill="#fef9e8">
+         <items>
+            <MenuItem fx:id="dropDownSigns" mnemonicParsing="false" onAction="#handleDropDownSigns" text="Calculate Signs" />
+            <MenuItem fx:id="dropDownPValue" mnemonicParsing="false" onAction="#handledropDownPValue" text="Calculate p-value" />
+            <MenuItem fx:id="dropDownCalculate" mnemonicParsing="false" onAction="#handledropDownCalculate" text="Conclude" />
+         </items>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </MenuButton>
+      <JFXButton fx:id="executeCommand" graphicTextGap="2.0" layoutX="508.0" layoutY="386.0" onMouseClicked="#handleExecuteButton" prefHeight="53.0" prefWidth="265.0" style="-fx-border-style: solid; -fx-border-color: white; -fx-font-family: &quot;Sora SemiBold&quot;; -fx-border-radius: 20 20 20 20; -fx-background-color: #282828; -fx-border-width: 0.1; -fx-background-radius: 20 20 20 20;" text="Execute" textFill="#fef9e8">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <TextArea layoutX="610.0" layoutY="261.0" prefHeight="125.0" prefWidth="172.0" style="-fx-background-color: none; -fx-text-fill: #efe9e8; -fx-font-family: Sora; -fx-font-size: 10;" text="Assumptions:&#10; 1. dependent variable &#10;should be measured on a &#10;continuous or ordinal scale&#10;2. Independent variable &#10;consists of two categorical&#10;groups&#10;3. Continous distribution">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </TextArea>
    </children>
 </AnchorPane>

@@ -17,7 +17,8 @@ public class HelloApplication extends Application {
         Font.loadFont(getClass().getResourceAsStream("/resources/fonts/Sora.ttf"), 14);
         System.out.println(Font.getFontNames("Sora"));
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 720, 360);
+        Scene scene = new Scene(fxmlLoader.load(), 789, 549);
+        stage.setResizable(false);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();

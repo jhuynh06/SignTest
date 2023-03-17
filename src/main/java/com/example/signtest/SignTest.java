@@ -1,4 +1,5 @@
 package com.example.signtest;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import org.apache.commons.math3.util.CombinatoricsUtils;
 public class SignTest extends HelloController {
@@ -6,10 +7,10 @@ public class SignTest extends HelloController {
     private int neg;
     private int nTerms;
     private double pValue;
-    public void takeSignsTwoSample(ArrayList<Integer> d1, ArrayList<Integer> d2) {
+    public void takeSignsTwoSample(ArrayList<Double> d1, ArrayList<Double> d2) {
         nTerms = d1.size();
         for(int i = 0; i < d1.size(); i++ ) {
-            int diff = d1.get(i) - d2.get(i);
+            double diff = d1.get(i) - d2.get(i);
             if (diff < 0) {
                 neg++;
             }
@@ -62,8 +63,9 @@ public class SignTest extends HelloController {
     public int getnTerms() {
         return nTerms;
     }
-    public double getpValue() {
-        return pValue;
+    public String getpValue() {
+        DecimalFormat f = new DecimalFormat("##.00");
+        return f.format(pValue);
     }
 
 

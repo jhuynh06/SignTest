@@ -8,14 +8,14 @@ import com.opencsv.exceptions.CsvValidationException;
 public class OpenCSV {
 
     public DataSet readColumns(String path) {
-        ArrayList<Integer> data1 = new ArrayList<Integer>();
-        ArrayList<Integer> data2 = new ArrayList<Integer>();
+        ArrayList<Double> data1 = new ArrayList<Double>();
+        ArrayList<Double> data2 = new ArrayList<Double>();
         try {
             CSVReader csvReader = new CSVReader(new FileReader(path));
             String [] nextLine;
             while ((nextLine = csvReader.readNext()) != null) {
-                data1.add(Integer.valueOf(nextLine[0]));
-                data2.add(Integer.valueOf(nextLine[1]));
+                data1.add(Double.valueOf(nextLine[0]));
+                data2.add(Double.valueOf(nextLine[1]));
             }
         }
         catch(IOException | CsvValidationException ex) {
