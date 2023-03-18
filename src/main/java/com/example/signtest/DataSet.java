@@ -10,6 +10,9 @@ public class DataSet {
         x = data1;
         y = data2;
     }
+    public DataSet (ArrayList<Double> data1) {
+        x = data1;
+    }
     public static ArrayList<Double> getData1() {
         return x;
     }

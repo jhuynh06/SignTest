@@ -15,6 +15,10 @@ import javafx.stage.Stage;
 import java.io.File;
 
 public class HelloController {
+    public boolean alreadyCalculated = false;
+    public boolean nullCheck;
+    public boolean alternativeCheck;
+    public String hypothesisStorage;
     public int options;
     @FXML
     public Label terms;
@@ -48,6 +52,14 @@ public class HelloController {
     public MenuItem dropDownCalculate;
     @FXML
     public MenuButton CalculateMenu;
+    @FXML
+    public TextField hypothesis;
+    @FXML
+    public Label transparentlabel;
+    @FXML
+    public Label Output;
+    @FXML
+    public TextArea textArea;
     @FXML
     private TextField probField;
     @FXML
@@ -92,7 +104,13 @@ public class HelloController {
             setTextToLabel(path);
             setTextforSize(String.valueOf(file.length()/1024));
             OpenCSV convert = new OpenCSV();
+            if (oneSample == true) {
+                convert.setOneSample(true);
+                System.out.println(oneSample);
+            }
             given = convert.readColumns(path);
+            System.out.println(DataSet.getData1());
+            System.out.println(DataSet.getData2());
 
         }
         catch (Exception e) {
@@ -140,10 +158,21 @@ public class HelloController {
     }
     public void handleMedian(KeyEvent keyEvent) {
         medianForOneSample = Double.parseDouble(medianField.getText());
+        if (medianForOneSample > 0) {
+            oneSample = true;
+        }
     }
     public void handleCalculate() {
         signTest = new SignTest();
-        signTest.takeSignsTwoSample(DataSet.getData1(), DataSet.getData2());
+        if (oneSample == false) {
+            signTest.takeSignsTwoSample(DataSet.getData1(), DataSet.getData2());
+        }
+        else {
+            signTest.takeSignsOneSample(DataSet.getData1(), medianForOneSample);;
+        }
+        nTermsDisplay.setWrappingWidth(1000);
+        positiveCount.setWrappingWidth(1000);
+        negativeCount.setWrappingWidth(1000);
         nTermsDisplay.setText(Integer.toString(signTest.getnTerms()));
         positiveCount.setText(Integer.toString(signTest.getPos()));
         negativeCount.setText(Integer.toString(signTest.getNeg()));
@@ -151,11 +180,28 @@ public class HelloController {
     @FXML
     public void handlePbutton() {
         signTest.pValue();
+        pValueDisplay.setWrappingWidth(1000);
         pValueDisplay.setText(signTest.getpValue());
     }
     @FXML
     public void handleConclusionButton() {
-        conclusionLabel.setText("Conclusion: " + signTest.conclusion());
+        Output.setText("Look to the right for conclusion.");
+        textArea.setWrapText(true);
+        textArea.setText(signTest.conclusion());
+    }
+    @FXML
+    public void handleParseHypothesis(KeyEvent keyEvent) {
+        transparentlabel.setVisible(false);
+        hypothesisStorage = hypothesis.getText();
+        nullCheck = hypothesisStorage.contains("null");
+        alternativeCheck = hypothesisStorage.contains("alternative");
+        if ((alternativeCheck == false) && (nullCheck == false) && (alreadyCalculated == false)) {
+            Output.setText("Missing alternative and null hypothesis!");
+        }
+        else if (alreadyCalculated == false){
+            Output.setText("No output currently.");
+        }
+
     }
 
 }
